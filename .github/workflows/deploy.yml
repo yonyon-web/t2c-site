@@ -30,7 +30,7 @@ jobs:
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
           VITE_DISCORD_CLIENT_ID: ${{ secrets.VITE_DISCORD_CLIENT_ID }}
-        run: pnpm run build
+        run: pnpm run build && pnpm run postbuild
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
