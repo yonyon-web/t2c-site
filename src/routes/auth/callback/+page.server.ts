@@ -4,8 +4,7 @@ import { redirect } from '@sveltejs/kit';
 
 export async function load({ url }) {
 	// Discord から返された OAuth "code" を取得
-	const code = url.searchParams.get('code');
-	console.log('Discord OAuth code:', code);
+	const code = url.searchParams.get('code');	
 	if (!code) {
 		throw redirect(302, '/');
 	}
