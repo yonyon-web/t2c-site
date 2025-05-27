@@ -27,6 +27,8 @@ jobs:
         run: pnpm install
 
       - name: Build site
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
         run: pnpm run build
 
       - name: Upload static site
