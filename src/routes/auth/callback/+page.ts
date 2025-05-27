@@ -14,12 +14,13 @@ export async function load({ url }) {
 		? 'http://localhost:5001/t2cproject-11057/us-central1/discordAuth'
 		: 'https://us-central1-t2cproject-11057.cloudfunctions.net/discordAuth';
 
-	const _url = new URL(endpoint);
-	_url.searchParams.append('code', code);
-
 	// Functions に code を送信して Firebase カスタムトークンを取得
-	const res = await fetch(_url.toString(), {
-		method: 'GET'
+	const res = await fetch(endpoint, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		},
+		body: JSON.stringify({ code })
 	});
 
 	console.log('[auth/callback] code =', code);
