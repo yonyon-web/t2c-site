@@ -29,6 +29,7 @@ jobs:
       - name: Build site
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
+          VITE_DISCORD_CLIENT_ID: ${{ secrets.VITE_DISCORD_CLIENT_ID }}
         run: pnpm run build
 
       - name: Upload static site
